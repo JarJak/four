@@ -23,7 +23,7 @@
         class="flag mr-1"
         :class="props.option.flag|uppercase"
       ></span>
-      <span>{{props.option.localisedname}}</span>
+      <span>{{props.option.localisedname}}<br><small>({{props.option.name}})</small></span>
     </template>
     </multiselect>
     
