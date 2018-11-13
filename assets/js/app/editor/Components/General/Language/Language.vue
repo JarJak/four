@@ -12,21 +12,21 @@
       @input="switchLocale()"
     >
     <template slot="singleLabel" slot-scope="props">
-      <span 
+      <span
         class="flag mr-1"
         :class="props.option.flag|uppercase"
       ></span>
       <span>{{props.option.localisedname}}</span>
     </template>
     <template slot="option" slot-scope="props">
-      <span 
+      <span
         class="flag mr-1"
         :class="props.option.flag|uppercase"
       ></span>
       <span>{{props.option.localisedname}}<br><small>({{props.option.name}})</small></span>
     </template>
     </multiselect>
-    
+
   </div>
 </template>
 
@@ -39,18 +39,15 @@ export default {
 
   components: { Multiselect },
 
-  props: ['label', 'locales'],
-
+  props: ['label', 'locales', 'current'],
 
   mounted(){
     const url = new URLSearchParams(window.location.search);
 
-    
-
-    if(url.has('locale')){
+    if(this.current){
 
       let current = this.locales.filter(locale =>
-        locale.code === url.get('locale')
+        locale.code === this.current
       )
       if(current.length > 0){
         this.locale = current[0];
